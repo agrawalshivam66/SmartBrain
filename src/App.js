@@ -32,8 +32,13 @@ class App extends Component {
     super();
     this.state = {
       input:'',
-      imageUrl:''
+      imageUrl:'',
+      box:{}
     }
+  }
+
+  calculateFaceLocation =(data)=>{
+
   }
   onInputChange = (event) =>{
     this.setState({input:event.target.value});
@@ -44,6 +49,7 @@ class App extends Component {
       this.state.input).then(
     function(response) {
       // do something with response
+      this.calculateFaceLocation(response);
       console.log(response.outputs[0].data.regions[0].region_info.bounding_box)
     },
     function(err) {
